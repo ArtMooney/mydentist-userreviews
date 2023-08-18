@@ -1,72 +1,70 @@
 <template>
-  <div class="mydentist-app">
+  <div class="mydentist-app userreviews">
     <div
-      id="w-node-_5ef4a456-78ee-3356-a721-49f53fdd5c23-2190bb79"
-      class="minasidor-wrapper"
+      id="w-node-_5ef4a456-78ee-3356-a721-49f53fdd5c23-66a39b36"
+      class="userreviews-wrapper"
     >
       <h1
-        id="w-node-_7774ae3b-e687-287a-81f9-e752ccf6179e-2190bb79"
-        class="text-heading"
+        id="w-node-_4bdeeea9-8aa6-fb9b-74fc-6d0ad61cef22-66a39b36"
+        class="text-heading-reviews"
       >
-        Aktuella bokningar
+        Omdömen från våra kunder
       </h1>
-      <h1
-        id="w-node-_4bdeeea9-8aa6-fb9b-74fc-6d0ad61cef22-2190bb79"
-        class="text-heading"
-      >
-        Min journal
-      </h1>
-
-      <div class="times-wrapper">
-        <div
-          class="time-block"
-          @click="handleTimeblockLeft(index)"
-          v-for="(entry, index) of listBookings.data"
-          :key="index"
-        >
-          <div class="block-title">
-            {{ formattedDate(entry.attributes.dtend) }}
-          </div>
-          <img
-            :src="index === showItemLeft ? base64svg(minus) : base64svg(plus)"
+      <div class="review-block">
+        <div class="review-comment">
+          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
+          börja med ligger vi mitt i centrum i entréplan och har öppet när det
+          passar dig att komma, utan vänt&quot;
+        </div>
+        <div class="review-name-title">Stina Nilsson</div>
+        <div class="review-score-wrapper">
+          <img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
             alt=""
-            class="time-block-icon"
-          />
-          <div
-            class="time-block-content-wrapper"
-            :class="{ active: index === showItemLeft }"
-          >
-            <div class="time-block-content">
-              Plats: {{ entry.attributes.location }} <br />
-              Pris: {{ entry.attributes.price }} <br />
-              Information: {{ entry.attributes.text }}
-            </div>
-          </div>
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
+            alt=""
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" />
         </div>
       </div>
-
-      <div class="times-wrapper">
-        <div
-          class="time-block"
-          @click="handleTimeblockRight(index)"
-          v-for="(entry, index) of listJournalEntries.data"
-          :key="index"
-        >
-          <div class="block-title">
-            {{ formattedDate(entry.attributes.signed_at) }} :
-            {{ entry.attributes.entry_type }}
-          </div>
-          <img
-            :src="index === showItemRight ? base64svg(minus) : base64svg(plus)"
+      <div class="review-block">
+        <div class="review-comment">
+          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
+          börja med ligger vi mitt i centrum i entréplan och har öppet när det
+          passar dig att komma, utan vänt&quot;
+        </div>
+        <div class="review-name-title">Kent Karlsson</div>
+        <div class="review-score-wrapper">
+          <img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
             alt=""
-            class="time-block-icon"
-          />
-          <div
-            class="time-block-content-wrapper"
-            :class="{ active: index === showItemRight }"
-          >
-            <div class="time-block-content">{{ entry.attributes.text }}</div>
-          </div>
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
+            alt=""
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" />
+        </div>
+      </div>
+      <div class="review-block">
+        <div class="review-comment">
+          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
+          börja med ligger vi mitt i centrum i entréplan och har öppet när det
+          passar dig att komma, utan vänt&quot;
+        </div>
+        <div class="review-name-title">Lina Andersson</div>
+        <div class="review-score-wrapper">
+          <img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
+            alt=""
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" /><img
+            :src="base64svg(star)"
+            alt=""
+            class="review-star"
+          /><img :src="base64svg(star)" alt="" class="review-star" />
         </div>
       </div>
     </div>
@@ -74,8 +72,7 @@
 </template>
 
 <script>
-import plus from "./images/plus.svg?raw";
-import minus from "./images/minus.svg?raw";
+import star from "./images/star.svg?raw";
 
 export default {
   name: "UserReviews",
@@ -91,8 +88,7 @@ export default {
       listBookings: [],
       showItemLeft: false,
       showItemRight: false,
-      plus: plus,
-      minus: minus,
+      star: star,
     };
   },
 
