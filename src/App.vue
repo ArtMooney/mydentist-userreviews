@@ -5,18 +5,14 @@
 </style>
 
 <template>
-  <MinaSidor />
-
-  <!-- <div>
-    <router-view />
-  </div> -->
+  <UserReviews />
 </template>
 
 <script>
-import MinaSidor from "./MinaSidor.vue";
+import UserReviews from "./UserReviews.vue";
 
 export default {
   name: "App",
-  components: { MinaSidor },
+  components: { UserReviews },
 };
 </script>

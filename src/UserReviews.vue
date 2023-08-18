@@ -78,7 +78,7 @@ import plus from "./images/plus.svg?raw";
 import minus from "./images/minus.svg?raw";
 
 export default {
-  name: "Home",
+  name: "UserReviews",
 
   data() {
     return {
