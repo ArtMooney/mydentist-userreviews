@@ -330,6 +330,21 @@ a {
   line-height: 2.4rem;
 }
 
+.button-userreviews {
+  color: #000;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 0.8rem;
+  margin-top: 3rem;
+  padding: 0.9rem 4rem 0.6rem;
+  font-family: Fororounded, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4rem;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 991px) {
   .column {
     font-size: 0.7rem;
@@ -545,6 +560,11 @@ a {
 #w-node-_1fae3cab-8747-3ddc-498c-d9b268dfeec6-ff84f577 {
   align-self: start;
   justify-self: end;
+}
+
+#w-node-_9e6dbf64-1d85-6119-4830-a3051c3a009b-ff84f577 {
+  grid-area: span 1 / span 1 / span 1 / span 1;
+  justify-self: center;
 }
 
 @media screen and (max-width: 767px) {

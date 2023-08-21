@@ -6,7 +6,7 @@
     >
       <div
         v-if="listReviews && listReviews.data"
-        v-for="review of listReviews.data.slice(0, 7)"
+        v-for="review of listReviews.data.slice(0, numberOfReviews)"
         :key="review.id"
         class="review-block vertical"
       >
@@ -32,6 +32,14 @@
           />
         </div>
       </div>
+      <button
+        v-if="!disableLoadMore"
+        @click="loadMoreReviews"
+        id="w-node-_9e6dbf64-1d85-6119-4830-a3051c3a009b-ff84f577"
+        class="button-userreviews"
+      >
+        Ladda fler
+      </button>
     </div>
   </div>
 </template>
@@ -49,8 +57,8 @@ export default {
       userName: "XkehuCfMZ!hU%8h=",
       userPass: "QH5EV=2hNc*LFjJd",
       listReviews: [],
-      showItemLeft: false,
-      showItemRight: false,
+      numberOfReviews: 7,
+      disableLoadMore: false,
       star: star,
     };
   },
@@ -103,6 +111,25 @@ export default {
     getRepeatTimes(times) {
       return [...Array(times).keys()];
     },
+
+    loadMoreReviews() {
+      this.numberOfReviews += 7;
+
+      if (this.numberOfReviews >= parseInt(this.listReviews.data.length)) {
+        this.disableLoadMore = true;
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+.button-userreviews {
+  box-shadow: inset 0 -3px 0 -3px #e4e4e4;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.button-userreviews:hover {
+  box-shadow: inset 0 -50px 0 -3px #e4e4e4;
+}
+</style>

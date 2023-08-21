@@ -52,8 +52,6 @@ export default {
       userName: "XkehuCfMZ!hU%8h=",
       userPass: "QH5EV=2hNc*LFjJd",
       listReviews: [],
-      showItemLeft: false,
-      showItemRight: false,
       star: star,
     };
   },
