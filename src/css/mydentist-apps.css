@@ -261,7 +261,7 @@ a {
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
   grid-auto-columns: 1fr;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
   padding: 1.5rem;
   font-family: Fororounded, sans-serif;

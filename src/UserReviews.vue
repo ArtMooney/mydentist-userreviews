@@ -10,61 +10,29 @@
       >
         Omdömen från våra kunder
       </h1>
-      <div class="review-block">
+      <div
+        v-if="listReviews && listReviews.data"
+        v-for="review of listReviews.data.slice(0, 3)"
+        :key="review.id"
+        class="review-block"
+      >
         <div class="review-comment">
-          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
-          börja med ligger vi mitt i centrum i entréplan och har öppet när det
-          passar dig att komma, utan vänt&quot;
+          &quot;{{ review.attributes.review_comment }}&quot;
         </div>
-        <div class="review-name-title">Stina Nilsson</div>
-        <div class="review-score-wrapper">
-          <img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" />
-        </div>
-      </div>
-      <div class="review-block">
-        <div class="review-comment">
-          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
-          börja med ligger vi mitt i centrum i entréplan och har öppet när det
-          passar dig att komma, utan vänt&quot;
-        </div>
-        <div class="review-name-title">Kent Karlsson</div>
-        <div class="review-score-wrapper">
-          <img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" />
-        </div>
-      </div>
-      <div class="review-block">
-        <div class="review-comment">
-          &quot;Vi är MyDentist - en helt ny typ av Tandvårdsklinik. Till att
-          börja med ligger vi mitt i centrum i entréplan och har öppet när det
-          passar dig att komma, utan vänt&quot;
-        </div>
-        <div class="review-name-title">Lina Andersson</div>
-        <div class="review-score-wrapper">
-          <img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" /><img
-            :src="base64svg(star)"
-            alt=""
-            class="review-star"
-          /><img :src="base64svg(star)" alt="" class="review-star" />
+        <div>
+          <div class="review-name-title">
+            {{ review.attributes.patient_name }}
+          </div>
+          <div class="review-score-wrapper">
+            <img
+              v-for="(item, index) in getRepeatTimes(
+                review.attributes.overall_rating
+              )"
+              :src="base64svg(star)"
+              alt=""
+              class="review-star"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -80,12 +48,10 @@ export default {
   data() {
     return {
       apiBaseUrl: "https://api.ngine.se/webhook/mydentist/",
-      getJournalEntries: "get-journal-entries",
-      getBookings: "bookings",
+      getReviews: "get-reviews",
       userName: "XkehuCfMZ!hU%8h=",
       userPass: "QH5EV=2hNc*LFjJd",
-      listJournalEntries: [],
-      listBookings: [],
+      listReviews: [],
       showItemLeft: false,
       showItemRight: false,
       star: star,
@@ -95,18 +61,9 @@ export default {
   async created() {
     console.clear();
 
-    this.listJournalEntries = await this.getApiData(
-      this.apiBaseUrl + this.getJournalEntries
-    );
-    this.listBookings = await this.getApiData(
-      this.apiBaseUrl + this.getBookings
-    );
+    this.listReviews = await this.getApiData(this.apiBaseUrl + this.getReviews);
 
-    // console.log(
-    //   "JOURNAL ENTRIES",
-    //   JSON.parse(JSON.stringify(this.listJournalEntries))
-    // );
-    // console.log("BOOKINGS", JSON.parse(JSON.stringify(this.listBookings)));
+    console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
   },
 
   methods: {
@@ -146,37 +103,9 @@ export default {
       return date.toLocaleDateString(undefined, options);
     },
 
-    handleTimeblockLeft(index) {
-      if (this.showItemLeft === index) {
-        this.showItemLeft = false;
-      } else {
-        this.showItemLeft = index;
-      }
-    },
-
-    handleTimeblockRight(index) {
-      if (this.showItemRight === index) {
-        this.showItemRight = false;
-      } else {
-        this.showItemRight = index;
-      }
+    getRepeatTimes(times) {
+      return [...Array(times).keys()];
     },
   },
 };
 </script>
-
-<style scoped>
-.time-block-content-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 200ms;
-}
-
-.time-block-content-wrapper.active {
-  grid-template-rows: 1fr;
-}
-
-.time-block-content {
-  overflow: hidden;
-}
-</style>
