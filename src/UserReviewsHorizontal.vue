@@ -4,12 +4,6 @@
       id="w-node-_5ef4a456-78ee-3356-a721-49f53fdd5c23-66a39b36"
       class="userreviews-wrapper"
     >
-      <h1
-        id="w-node-_4bdeeea9-8aa6-fb9b-74fc-6d0ad61cef22-66a39b36"
-        class="text-heading-reviews"
-      >
-        Omdömen från våra kunder
-      </h1>
       <div
         v-if="listReviews && listReviews.data"
         v-for="review of listReviews.data.slice(0, 3)"
