@@ -55,7 +55,7 @@ export default {
 
     this.listReviews = await this.getApiData(this.apiBaseUrl + this.getReviews);
 
-    console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
+    // console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
   },
 
   methods: {
