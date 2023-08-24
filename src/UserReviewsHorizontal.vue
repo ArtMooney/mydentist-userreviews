@@ -1,3 +1,9 @@
+<style scoped>
+@import "./css/normalize.css";
+@import "./css/components.css";
+@import "./css/mydentist-apps.css";
+</style>
+
 <template>
   <div class="mydentist-app userreviews">
     <div
@@ -55,7 +61,7 @@ export default {
 
     this.listReviews = await this.getApiData(this.apiBaseUrl + this.getReviews);
 
-    console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
+    // console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
   },
 
   methods: {

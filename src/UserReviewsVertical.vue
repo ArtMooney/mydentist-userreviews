@@ -1,3 +1,9 @@
+<style scoped>
+@import "./css/normalize.css";
+@import "./css/components.css";
+@import "./css/mydentist-apps.css";
+</style>
+
 <template>
   <div class="mydentist-app userreviews vertical">
     <div
