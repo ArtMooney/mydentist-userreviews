@@ -5,6 +5,6 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   build: {
-    assetsInlineLimit: 51200,
+    assetsInlineLimit: 351200,
   },
 });
