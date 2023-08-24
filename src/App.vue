@@ -1,3 +1,9 @@
+<style>
+@import "./css/normalize.css";
+@import "./css/components.css";
+@import "./css/mydentist-apps.css";
+</style>
+
 <template>
   <div>
     <template v-if="module === 'vertical'">
