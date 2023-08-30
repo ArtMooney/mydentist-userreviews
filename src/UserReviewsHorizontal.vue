@@ -7,7 +7,7 @@
         v-if="listReviews && listReviews.data"
         v-for="review of listReviews.data.slice(0, 3)"
         :key="review.id"
-        class="sans-serif flex min-h-[10.5rem] flex-col items-start justify-around rounded-lg bg-[#ccbcaa] p-6 font-fororounded sm:min-h-[11rem] lg:min-h-[12.5rem]"
+        class="sans-serif flex min-h-[12rem] flex-col items-start justify-around rounded-lg bg-[#ccbcaa] p-6 font-fororounded sm:min-h-[14rem] lg:min-h-[16rem]"
       >
         <div class="pb-4 italic leading-5">
           &quot;{{ review.attributes.review_comment }}&quot;
