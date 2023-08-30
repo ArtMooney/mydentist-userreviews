@@ -1,8 +1,3 @@
-<style>
-@import "./css/components.css";
-@import "./css/mydentist-apps.css";
-</style>
-
 <template>
   <div>
     <template v-if="module === 'vertical'">
@@ -20,7 +15,10 @@ import UserReviewsVertical from "./UserReviewsVertical.vue";
 
 export default {
   name: "App",
-  components: { UserReviewsHorizontal, UserReviewsVertical },
+  components: {
+    UserReviewsHorizontal,
+    UserReviewsVertical,
+  },
 
   computed: {
     module() {

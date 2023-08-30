@@ -1,30 +1,29 @@
 <template>
-  <div class="mydentist-app userreviews">
+  <div class="relative flex flex-col items-center pb-8 pl-4 pr-4 pt-8">
     <div
-      id="w-node-_5ef4a456-78ee-3356-a721-49f53fdd5c23-66a39b36"
-      class="userreviews-wrapper"
+      class="grid w-full max-w-7xl grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-3 lg:w-11/12"
     >
       <div
         v-if="listReviews && listReviews.data"
         v-for="review of listReviews.data.slice(0, 3)"
         :key="review.id"
-        class="review-block"
+        class="sans-serif flex min-h-[12rem] flex-col items-start justify-around rounded-lg bg-[#ccbcaa] p-6 font-fororounded sm:min-h-[14rem] lg:min-h-[16.8rem]"
       >
-        <div class="review-comment">
+        <div class="pb-1.5 italic">
           &quot;{{ review.attributes.review_comment }}&quot;
         </div>
         <div>
-          <div class="review-name-title">
+          <div class="text-xl font-bold">
             {{ review.attributes.patient_name }}
           </div>
-          <div class="review-score-wrapper">
+          <div class="mb-4 mt-4 flex">
             <img
               v-for="(item, index) in getRepeatTimes(
-                review.attributes.overall_rating
+                review.attributes.overall_rating,
               )"
               :src="base64svg(star)"
               alt=""
-              class="review-star"
+              class="inline-block w-4"
             />
           </div>
         </div>

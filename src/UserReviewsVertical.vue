@@ -1,42 +1,37 @@
 <template>
-  <div class="mydentist-app userreviews vertical">
+  <div class="relative flex flex-row justify-center pb-8 pl-4 pr-4 pt-8">
     <div
-      id="w-node-_5ef4a456-78ee-3356-a721-49f53fdd5c23-ff84f577"
-      class="userreviews-wrapper vertical"
+      class="grid w-full max-w-7xl grid-cols-1 gap-4 sm:grid-cols-1 lg:w-11/12"
     >
       <div
         v-if="listReviews && listReviews.data"
         v-for="review of listReviews.data.slice(0, numberOfReviews)"
         :key="review.id"
-        class="review-block vertical"
+        class="sans-serif grid-rows-auto grid grid-cols-1 gap-4 rounded-lg bg-[#ede7e2] p-6 font-fororounded sm:auto-rows-[1fr] sm:grid-cols-[1fr,auto]"
       >
         <div>
-          <div class="review-name-title">
+          <div class="text-xl font-bold md:text-2xl">
             {{ review.attributes.patient_name }}
           </div>
-          <div class="review-comment">
+          <div class="pb-1.5 italic">
             &quot;{{ review.attributes.review_comment }}&quot;
           </div>
         </div>
-        <div
-          id="w-node-_43e78301-f4e5-c172-1fbb-c71ce5cf950c-ff84f577"
-          class="review-score-wrapper vertical"
-        >
+        <div class="block sm:pl-8">
           <img
             v-for="(item, index) in getRepeatTimes(
-              review.attributes.overall_rating
+              review.attributes.overall_rating,
             )"
             :src="base64svg(star)"
             alt=""
-            class="review-star"
+            class="inline-block w-4"
           />
         </div>
       </div>
       <button
         v-if="!disableLoadMore"
         @click="loadMoreReviews"
-        id="w-node-_9e6dbf64-1d85-6119-4830-a3051c3a009b-ff84f577"
-        class="button-userreviews"
+        class="mt-12 box-content inline-block justify-self-center rounded-2xl border-2 border-black bg-white px-16 pb-3 pt-4 font-fororounded text-base font-semibold uppercase leading-5 text-black no-underline shadow-[inset_0_-3px_0px_-3px_#e4e4e4] transition-shadow duration-150 ease-in-out hover:shadow-[inset_0_-60px_0px_-3px_#e4e4e4]"
       >
         Ladda fler
       </button>
@@ -68,7 +63,7 @@ export default {
 
     this.listReviews = await this.getApiData(this.apiBaseUrl + this.getReviews);
 
-    console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
+    // console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
   },
 
   methods: {
@@ -122,14 +117,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.button-userreviews {
-  box-shadow: inset 0 -3px 0 -3px #e4e4e4;
-  transition: box-shadow 0.15s ease-in-out;
-}
-
-.button-userreviews:hover {
-  box-shadow: inset 0 -50px 0 -3px #e4e4e4;
-}
-</style>
