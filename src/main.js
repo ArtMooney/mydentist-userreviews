@@ -5,4 +5,4 @@ import "./css/tailwind.css";
 // import "./css/fonts.css";
 
 // createApp(App).use(createRouter()).mount("#app");
-createApp(App).mount("#app");
+createApp(App).mount("#mydentist-userreviews");
