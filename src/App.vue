@@ -20,9 +20,18 @@ export default {
     UserReviewsVertical,
   },
 
+  data() {
+    return {
+      mode: "",
+    };
+  },
+
   created() {
-    const mode = localStorage.getItem("userreviewsMode") || "horizontal";
-    console.log("MODE", mode);
+    this.mode = localStorage.getItem("userreviewsMode") || "horizontal";
+  },
+
+  mounted() {
+    console.log("MODE", this.mode);
 
     localStorage.removeItem("userreviewsMode");
   },
