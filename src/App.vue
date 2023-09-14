@@ -1,9 +1,9 @@
 <template>
   <div>
-    <template v-if="module === 'vertical'">
+    <template v-if="mode === 'vertical'">
       <UserReviewsVertical />
     </template>
-    <template v-else-if="module === 'horizontal'">
+    <template v-else-if="mode === 'horizontal'">
       <UserReviewsHorizontal />
     </template>
   </div>
@@ -31,8 +31,6 @@ export default {
   },
 
   mounted() {
-    console.log("MODE", this.mode);
-
     localStorage.removeItem("userreviewsMode");
   },
 

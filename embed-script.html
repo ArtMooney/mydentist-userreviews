@@ -4,7 +4,7 @@
   const userreviewsUrl =
     "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
 
-  localStorage.setItem("userreviewsMode", "vertical");
+  localStorage.setItem("userreviewsMode", "vertical"); // horizontal or vertical
 
   fetch(userreviewsUrl + "/" + "index.html")
     .then((response) => response.text())
