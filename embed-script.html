@@ -1,10 +1,10 @@
 <div id="mydentist-userreviews"></div>
 
 <script>
-  const appUrl =
+  const userreviewsUrl =
     "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
 
-  fetch(appUrl + "/" + "index.html")
+  fetch(userreviewsUrl + "/" + "index.html")
     .then((response) => response.text())
     .then((html) => {
       const parser = new DOMParser();
@@ -18,7 +18,15 @@
       const scriptElement = document.createElement("script");
       scriptElement.type = "module";
       scriptElement.textContent = `
-        import('${appUrl + scriptSrc}')
+        import('${userreviewsUrl + scriptSrc}')
+          .then((module) => {
+            module.default({
+              el: '#mydentist-userreviews',
+              props: {
+                mode: 'vertical',
+              }
+            });
+          })
           .catch((error) => {
             console.error('Error importing the module:', error);
           });
@@ -26,7 +34,7 @@
 
       const linkElement = document.createElement("link");
       linkElement.rel = "stylesheet";
-      linkElement.href = appUrl + cssHref;
+      linkElement.href = userreviewsUrl + cssHref;
 
       document.head.appendChild(scriptElement);
       document.head.appendChild(linkElement);

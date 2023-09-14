@@ -20,6 +20,19 @@ export default {
     UserReviewsVertical,
   },
 
+  props: {
+    mode: {
+      type: String,
+      default: "horizontal",
+    },
+  },
+
+  mounted() {
+    setTimeout(() => {
+      console.log("MODE", this.mode);
+    }, 1000);
+  },
+
   computed: {
     module() {
       const url = window.location.href;
