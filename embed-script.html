@@ -4,7 +4,7 @@
   const userreviewsUrl =
     "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
 
-  const userreviewsMode = "vertical";
+  localStorage.setItem("userreviewsMode", "vertical");
 
   fetch(userreviewsUrl + "/" + "index.html")
     .then((response) => response.text())
@@ -21,11 +21,6 @@
       scriptElement.type = "module";
       scriptElement.textContent = `
       import('${userreviewsUrl + scriptSrc}')
-        .then((module) => {
-          // Assuming the imported module exports a function or object that can receive the variable.
-          // Modify this part based on the actual structure of the imported module.
-          module.appMode("LÖK");
-        })
         .catch((error) => {
           console.error('Error importing the module:', error);
         });
