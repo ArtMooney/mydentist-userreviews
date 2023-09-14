@@ -31,6 +31,10 @@ export default {
     setTimeout(() => {
       console.log("MODE", this.mode);
     }, 1000);
+
+    window.addEventListener("modeEvent", (event) => {
+      const mode = event.detail;
+    });
   },
 
   computed: {

@@ -4,6 +4,8 @@
   const userreviewsUrl =
     "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
 
+  const userreviewsMode = "vertical";
+
   fetch(userreviewsUrl + "/" + "index.html")
     .then((response) => response.text())
     .then((html) => {
@@ -18,18 +20,20 @@
       const scriptElement = document.createElement("script");
       scriptElement.type = "module";
       scriptElement.textContent = `
-        import('${userreviewsUrl + scriptSrc}')
-          .then((module) => {
-            module.default({
-              el: '#mydentist-userreviews',
-              props: {
-                mode: 'vertical',
-              }
-            });
-          })
-          .catch((error) => {
-            console.error('Error importing the module:', error);
+      import('${bokningswidgetUrl + scriptSrc}')
+        .then((module) => {
+          module.initialize({
+            mode: '${userreviewsMode}',
           });
+
+          const modeEvent = new CustomEvent('modeEvent', {
+            detail: mode,
+          });
+          window.dispatchEvent(modeEvent);
+        })
+        .catch((error) => {
+          console.error('Error importing the module:', error);
+        });
       `;
 
       const linkElement = document.createElement("link");
