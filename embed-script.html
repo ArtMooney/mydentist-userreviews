@@ -20,16 +20,11 @@
       const scriptElement = document.createElement("script");
       scriptElement.type = "module";
       scriptElement.textContent = `
-      import('${bokningswidgetUrl + scriptSrc}')
+      import('${userreviewsUrl + scriptSrc}')
         .then((module) => {
-          module.initialize({
-            mode: '${userreviewsMode}',
-          });
-
-          const modeEvent = new CustomEvent('modeEvent', {
-            detail: mode,
-          });
-          window.dispatchEvent(modeEvent);
+          // Assuming the imported module exports a function or object that can receive the variable.
+          // Modify this part based on the actual structure of the imported module.
+          module.appMode("LÖK");
         })
         .catch((error) => {
           console.error('Error importing the module:', error);
