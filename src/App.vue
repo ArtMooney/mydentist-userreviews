@@ -20,7 +20,7 @@ export default {
     UserReviewsVertical,
   },
 
-  mounted() {
+  created() {
     const mode = localStorage.getItem("userreviewsMode") || "horizontal";
     console.log("MODE", mode);
 
