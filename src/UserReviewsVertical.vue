@@ -10,9 +10,22 @@
         class="sans-serif grid-rows-auto grid grid-cols-1 gap-4 rounded-lg bg-[#ede7e2] p-6 font-fororounded sm:auto-rows-[1fr] sm:grid-cols-[1fr,auto]"
       >
         <div>
-          <div class="text-xl font-bold md:text-2xl">
-            {{ review.attributes.patient_name }}
+          <div
+            class="pb-2.5 sm:flex sm:items-center sm:justify-start sm:pb-1.5"
+          >
+            <div class="text-xl font-bold md:text-2xl">
+              {{ review.attributes.patient_name }}
+            </div>
+            <div class="flex items-center justify-start">
+              <img
+                :src="base64svg(checkmark)"
+                alt=""
+                class="mr-1.5 h-5 w-5 sm:ml-1.5"
+              />
+              <div class="text-left text-xs leading-4">Verifierad patient</div>
+            </div>
           </div>
+
           <div class="pb-1.5 italic">
             &quot;{{ review.attributes.review_comment }}&quot;
           </div>
@@ -41,6 +54,7 @@
 
 <script>
 import star from "./images/star.svg?raw";
+import checkmark from "./images/checkmark.svg?raw";
 
 export default {
   name: "UserReviews",
@@ -55,6 +69,7 @@ export default {
       numberOfReviews: 7,
       disableLoadMore: false,
       star: star,
+      checkmark: checkmark,
     };
   },
 

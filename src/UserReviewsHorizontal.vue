@@ -16,6 +16,14 @@
           <div class="text-xl font-bold">
             {{ review.attributes.patient_name }}
           </div>
+          <div class="flex items-center justify-start">
+            <img
+              :src="base64svg(checkmark)"
+              alt=""
+              class="ml-0 mr-1.5 h-5 w-5"
+            />
+            <div class="text-left text-xs leading-4">Verifierad patient</div>
+          </div>
           <div class="mb-4 mt-4 flex">
             <img
               v-for="(item, index) in getRepeatTimes(
@@ -34,6 +42,7 @@
 
 <script>
 import star from "./images/star.svg?raw";
+import checkmark from "./images/checkmark.svg?raw";
 
 export default {
   name: "UserReviews",
@@ -46,6 +55,7 @@ export default {
       userPass: "QH5EV=2hNc*LFjJd",
       listReviews: [],
       star: star,
+      checkmark: checkmark,
     };
   },
 
