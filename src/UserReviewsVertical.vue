@@ -66,7 +66,7 @@ export default {
       userName: "XkehuCfMZ!hU%8h=",
       userPass: "QH5EV=2hNc*LFjJd",
       listReviews: [],
-      numberOfReviews: 7,
+      numberOfReviews: 10,
       disableLoadMore: false,
       star: star,
       checkmark: checkmark,
