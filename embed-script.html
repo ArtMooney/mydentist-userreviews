@@ -1,39 +1,41 @@
 <div id="mydentist-userreviews"></div>
 
 <script>
-  const userreviewsUrl =
-    "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
+  (function () {
+    const url =
+      "https://cdn.jsdelivr.net/gh/ArtMooney/mydentist-userreviews@v0.0.1/dist";
 
-  localStorage.setItem("userreviewsMode", "vertical"); // horizontal or vertical
+    localStorage.setItem("userreviewsMode", "vertical"); // horizontal or vertical
 
-  fetch(userreviewsUrl + "/" + "index.html")
-    .then((response) => response.text())
-    .then((html) => {
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(html, "text/html");
+    fetch(url + "/" + "index.html")
+      .then((response) => response.text())
+      .then((html) => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(html, "text/html");
 
-      const scriptSrc = htmlDoc.querySelector("script").getAttribute("src");
-      const cssHref = htmlDoc
-        .querySelector('link[rel="stylesheet"]')
-        .getAttribute("href");
+        const scriptSrc = htmlDoc.querySelector("script").getAttribute("src");
+        const cssHref = htmlDoc
+          .querySelector('link[rel="stylesheet"]')
+          .getAttribute("href");
 
-      const scriptElement = document.createElement("script");
-      scriptElement.type = "module";
-      scriptElement.textContent = `
-      import('${userreviewsUrl + scriptSrc}')
-        .catch((error) => {
-          console.error('Error importing the module:', error);
-        });
+        const scriptElement = document.createElement("script");
+        scriptElement.type = "module";
+        scriptElement.textContent = `
+        import('${url + scriptSrc}')
+          .catch((error) => {
+            console.error('Error importing the module:', error);
+          });
       `;
 
-      const linkElement = document.createElement("link");
-      linkElement.rel = "stylesheet";
-      linkElement.href = userreviewsUrl + cssHref;
+        const linkElement = document.createElement("link");
+        linkElement.rel = "stylesheet";
+        linkElement.href = url + cssHref;
 
-      document.head.appendChild(scriptElement);
-      document.head.appendChild(linkElement);
-    })
-    .catch((error) => {
-      console.error("Error fetching the file:", error);
-    });
+        document.head.appendChild(scriptElement);
+        document.head.appendChild(linkElement);
+      })
+      .catch((error) => {
+        console.error("Error fetching the file:", error);
+      });
+  })();
 </script>
