@@ -60,11 +60,7 @@ export default {
   },
 
   async created() {
-    console.clear();
-
     this.listReviews = await this.getApiData(this.apiBaseUrl + this.getReviews);
-
-    // console.log("REVIEWS", JSON.parse(JSON.stringify(this.listReviews)));
   },
 
   methods: {
